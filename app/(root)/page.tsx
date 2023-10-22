@@ -1,9 +1,11 @@
 import { UserButton } from '@clerk/nextjs'
 
-export default function Home() {
+const SetUpPage = () => {
 	return (
 		<main>
 			<UserButton afterSignOutUrl='/' />
 		</main>
 	)
 }
+
+export default SetUpPage
