@@ -1,7 +1,15 @@
 'use client'
-type Props = {}
+import { ReactNode } from 'react'
 
-const Modal = (props: Props) => {
+type Props = {
+	title: string
+	description: string
+	isOpen: boolean
+	onClose: () => void
+	children?: ReactNode
+}
+
+const Modal = ({ title, description, isOpen, onClose, children }: Props) => {
 	return <div>Modal</div>
 }
 
