@@ -15,14 +15,6 @@ const SetUpPage = () => {
 	return (
 		<main>
 			<UserButton afterSignOutUrl='/' />
-			<Modal
-				isOpen
-				onClose={() => {}}
-				title='Test'
-				description='Test Description'
-			>
-				Children
-			</Modal>
 		</main>
 	)
 }
