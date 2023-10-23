@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { RootState } from '../store'
 
 interface IModalState {
 	isOpen: boolean
@@ -21,6 +22,6 @@ const modalSlice = createSlice({
 
 export const { openModal, closeModal } = modalSlice.actions
 
-export const selectIsOpen = (state: IModalState) => state.isOpen
+export const selectIsOpen = (state: RootState) => state.modalToggle
 
 export default modalSlice.reducer
