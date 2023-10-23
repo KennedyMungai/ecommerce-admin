@@ -13,7 +13,14 @@ const ModalProvider = (props: Props) => {
 
 	if (!isMounted) return null
 
-	return <Modal title={'Test'} description={'Test Description'} />
+	return (
+		<Modal
+			title={'Create A Store'}
+			description={
+				'Add a new store to manage products and their categories'
+			}
+		/>
+	)
 }
 
 export default ModalProvider
