@@ -4,7 +4,7 @@ interface IModalState {
 	isOpen: boolean
 }
 
-const initialState: IModalState = { isOpen: false }
+const initialState: IModalState = { isOpen: true }
 
 const modalSlice = createSlice({
 	name: 'ModalSlice',

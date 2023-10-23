@@ -1,4 +1,5 @@
 'use client'
+import Modal from '@/components/Modal/Modal'
 import { useEffect, useState } from 'react'
 
 type Props = {}
@@ -12,7 +13,7 @@ const ModalProvider = (props: Props) => {
 
 	if (!isMounted) return null
 
-	return <div>ModalProvider</div>
+	return <Modal title={'Test'} description={'Test Description'} />
 }
 
 export default ModalProvider

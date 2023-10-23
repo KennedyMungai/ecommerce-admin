@@ -8,27 +8,17 @@ import {
 	DialogTitle
 } from '../ui/dialog'
 import { useAppDispatch, useAppSelector } from '@/Redux/hooks'
-import {
-	selectIsOpen,
-	openModal,
-	closeModal
-} from '@/Redux/features/modalSlice'
+import { openModal, closeModal } from '@/Redux/features/modalSlice'
 
 type Props = {
 	title: string
 	description: string
-	// isOpen: boolean
-	onClose: () => void
 	children?: ReactNode
 }
 
-const Modal = ({ title, description, onClose, children }: Props) => {
+const Modal = ({ title, description, children }: Props) => {
 	const isModalOpen = useAppSelector((state) => state.modalToggle)
 	const dispatch = useAppDispatch()
-
-	const onChange = (open: boolean) => {
-		if (!open) onClose()
-	}
 
 	const toggleModal = () => {
 		if (isModalOpen.isOpen === true) {
