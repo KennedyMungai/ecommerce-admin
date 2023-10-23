@@ -1,6 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
+import modalReducer from './features/modalSlice'
 
-const store = configureStore({ reducer: {} })
+const store = configureStore({
+	reducer: {
+		modalToggle: modalReducer
+	}
+})
 
 export default store
 
