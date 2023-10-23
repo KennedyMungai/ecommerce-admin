@@ -3,6 +3,7 @@ import { Open_Sans } from 'next/font/google'
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import ReduxProvider from '@/Redux/ReduxProvider'
+import ModalProvider from '@/providers/ModalProvider'
 
 const open_sans = Open_Sans({ subsets: ['latin'] })
 
@@ -20,7 +21,10 @@ export default function RootLayout({
 		<ClerkProvider>
 			<ReduxProvider>
 				<html lang='en'>
-					<body className={open_sans.className}>{children}</body>
+					<body className={open_sans.className}>
+						<ModalProvider />
+						{children}
+					</body>
 				</html>
 			</ReduxProvider>
 		</ClerkProvider>
