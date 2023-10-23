@@ -1,5 +1,4 @@
-import React from 'react'
-
+'use client'
 type Props = {}
 
 const Modal = (props: Props) => {
