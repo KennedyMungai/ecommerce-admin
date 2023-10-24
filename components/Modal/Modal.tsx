@@ -21,8 +21,16 @@ type Props = {
 }
 
 const Modal = ({ title, description, children }: Props) => {
-	const isModalOpen = useAppSelector((state) => selectIsOpen)
+	const isModalOpen = useAppSelector((state) => state.modalToggle.isOpen)
 	const dispatch = useAppDispatch()
+
+	const toggleModal = () => {
+		if (isModalOpen === true) {
+			dispatch(closeModal())
+		} else {
+			dispatch(openModal())
+		}
+	}
 
 	return (
 		<Dialog open={isModalOpen} onOpenChange={toggleModal}>
