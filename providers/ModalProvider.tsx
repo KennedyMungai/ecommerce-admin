@@ -23,6 +23,10 @@ const ModalProvider = (props: Props) => {
 
 	if (!isMounted) return null
 
+	const onSubmit = async (values: z.infer<typeof formSchema>) => {
+		// TODO: Create Store
+	}
+
 	return (
 		<Modal
 			title={'Create A Store'}
