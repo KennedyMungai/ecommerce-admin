@@ -8,7 +8,11 @@ import {
 	DialogTitle
 } from '../ui/dialog'
 import { useAppDispatch, useAppSelector } from '@/Redux/hooks'
-import { openModal, closeModal } from '@/Redux/features/modalSlice'
+import {
+	openModal,
+	closeModal,
+	selectIsOpen
+} from '@/Redux/features/modalSlice'
 
 type Props = {
 	title: string
@@ -17,22 +21,11 @@ type Props = {
 }
 
 const Modal = ({ title, description, children }: Props) => {
-	const isModalOpen = useAppSelector((state) => state.modalToggle)
+	const isModalOpen = useAppSelector((state) => selectIsOpen)
 	const dispatch = useAppDispatch()
 
-	const toggleModal = () => {
-		if (isModalOpen.isOpen === true) {
-			dispatch(openModal())
-		} else {
-			dispatch(closeModal())
-		}
-	}
-
 	return (
-		<Dialog
-			open={isModalOpen.isOpen}
-			onOpenChange={() => dispatch(toggleModal)}
-		>
+		<Dialog open={isModalOpen} onOpenChange={toggleModal}>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>{title}</DialogTitle>
