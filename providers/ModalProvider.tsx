@@ -25,6 +25,7 @@ const ModalProvider = (props: Props) => {
 
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		// TODO: Create Store
+		console.log(values)
 	}
 
 	return (
