@@ -77,7 +77,7 @@ const ModalProvider = (props: Props) => {
 					<Button variant={'outline'} onClick={closeModalFunc}>
 						Cancel
 					</Button>
-					<Button>Continue</Button>
+					<Button type='submit'>Continue</Button>
 				</div>
 			</div>
 		</Modal>
