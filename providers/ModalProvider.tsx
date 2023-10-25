@@ -47,6 +47,7 @@ const ModalProvider = (props: Props) => {
 		try {
 			setLoading(true)
 			const response = await axios.post('/api/stores', values)
+			toast.success('The store has been created')
 			console.log(response.data)
 		} catch (error: any) {
 			toast.error('Something went wrong')
