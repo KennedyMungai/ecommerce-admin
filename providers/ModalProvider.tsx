@@ -1,4 +1,6 @@
 'use client'
+import { closeModal } from '@/Redux/features/modalSlice'
+import { useAppDispatch, useAppSelector } from '@/Redux/hooks'
 import Modal from '@/components/Modal/Modal'
 import { Button } from '@/components/ui/button'
 import {
@@ -19,12 +21,17 @@ const formSchema = z.object({ name: z.string().min(1) })
 type Props = {}
 
 const ModalProvider = (props: Props) => {
+	const [isMounted, setIsMounted] = useState(false)
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: { name: '' }
 	})
 
-	const [isMounted, setIsMounted] = useState(false)
+	const isModalOpen = useAppSelector((state) => state.modalToggle.isOpen)
+	const dispatch = useAppDispatch()
+
+	const closeModalFunc = () => dispatch(closeModal())
 
 	useEffect(() => {
 		setIsMounted(true)
@@ -67,7 +74,9 @@ const ModalProvider = (props: Props) => {
 					</Form>
 				</div>
 				<div className='py-6 space-x-2 w-full flex items-center justify-end gap-10'>
-					<Button variant={'outline'}>Cancel</Button>
+					<Button variant={'outline'} onClick={closeModalFunc}>
+						Cancel
+					</Button>
 					<Button>Continue</Button>
 				</div>
 			</div>
