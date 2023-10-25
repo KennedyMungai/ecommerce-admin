@@ -16,6 +16,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import * as z from 'zod'
 
 const formSchema = z.object({ name: z.string().min(1) })
@@ -48,6 +49,7 @@ const ModalProvider = (props: Props) => {
 			const response = await axios.post('/api/stores', values)
 			console.log(response.data)
 		} catch (error: any) {
+			toast.error('Something went wrong')
 			console.log(error.message)
 		} finally {
 			setLoading(false)
