@@ -8,7 +8,8 @@ import {
 	FormControl,
 	FormField,
 	FormItem,
-	FormLabel
+	FormLabel,
+	FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -67,6 +68,7 @@ const ModalProvider = (props: Props) => {
 												{...field}
 											/>
 										</FormControl>
+										<FormMessage />
 									</FormItem>
 								)}
 							/>
