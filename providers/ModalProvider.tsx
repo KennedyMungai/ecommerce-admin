@@ -23,6 +23,7 @@ type Props = {}
 
 const ModalProvider = (props: Props) => {
 	const [isMounted, setIsMounted] = useState(false)
+	const [loading, setLoading] = useState(false)
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
