@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
@@ -23,7 +24,7 @@ type Props = {}
 
 const ModalProvider = (props: Props) => {
 	const [isMounted, setIsMounted] = useState(false)
-	const [loading, setLoading] = useState(false)
+	const [loading, setLoading] = useState(true)
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -42,8 +43,15 @@ const ModalProvider = (props: Props) => {
 	if (!isMounted) return null
 
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
-		// TODO: Create Store
-		console.log(values)
+		try {
+			setLoading(true)
+			const response = await axios.post('/api/stores', values)
+			console.log(response.data)
+		} catch (error: any) {
+			console.log(error.message)
+		} finally {
+			setLoading(false)
+		}
 	}
 
 	return (
@@ -66,6 +74,7 @@ const ModalProvider = (props: Props) => {
 										<FormControl>
 											<Input
 												placeholder='E-Commerce'
+												disabled={loading}
 												{...field}
 											/>
 										</FormControl>
@@ -77,10 +86,16 @@ const ModalProvider = (props: Props) => {
 					</Form>
 				</div>
 				<div className='py-6 space-x-2 w-full flex items-center justify-end gap-10'>
-					<Button variant={'outline'} onClick={closeModalFunc}>
+					<Button
+						variant={'outline'}
+						onClick={closeModalFunc}
+						disabled={loading}
+					>
 						Cancel
 					</Button>
-					<Button type='submit'>Continue</Button>
+					<Button type='submit' disabled={loading}>
+						Continue
+					</Button>
 				</div>
 			</div>
 		</Modal>
