@@ -14,11 +14,7 @@ const SetUpPage = () => {
 		}
 	}, [dispatch, isModalOpen])
 
-	return (
-		<main>
-			<UserButton afterSignOutUrl='/' />
-		</main>
-	)
+	return null
 }
 
 export default SetUpPage
